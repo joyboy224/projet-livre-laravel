@@ -1,18 +1,25 @@
 @extends('layouts.app')
 
+
 @section('content')
-<h1>Modifier l'avis</h1>
-<form action="{{ route('reviews.update', $review->id) }}" method="POST">
-    @csrf
-    @method('PUT')
-    <div>
-        <label for="rating">Note (1-5) :</label>
-        <input type="number" name="rating" id="rating" value="{{ $review->rating }}" min="1" max="5" required>
-    </div>
-    <div>
-        <label for="comment">Commentaire :</label>
-        <textarea name="comment" id="comment" required>{{ $review->comment }}</textarea>
-    </div>
-    <button type="submit">Modifier</button>
-</form>
+    <h1>Créer un nouveau livre</h1>
+    <a href="{{ route('books.index') }}">Retour à la liste</a>
+    <form action="{{ route('books.store') }}" method="POST">
+        @csrf
+        <div>
+            <label for="name">Titre du livre:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="author">Auteur:</label>
+            <input type="text" id="author" name="author" required>
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea>
+        </div>
+        <div>
+            <button type="submit">Créer le livre</button>
+        </div>
+    </form>
 @endsection
